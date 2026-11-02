@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen BDD Práctica - Normalización 3FN</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0; 
+            padding: 40px; 
+            background-color: #f4f7f6; 
+            color: #333; 
+        }
+        .container { 
+            max-width: 1000px; 
+            margin: auto; 
+            background: white; 
+            padding: 30px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08); 
+        }
+        h2 { 
+            color: #007bff; 
+            border-bottom: 2px solid #eaeaea; 
+            padding-bottom: 12px; 
+            margin-top: 0; 
+        }
+        p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin-top: 20px; 
+        }
+        th, td { 
+            border: 1px solid #e1e1e1; 
+            padding: 12px; 
+            text-align: left; 
+        }
+        th { 
+            background-color: #007bff; 
+            color: white; 
+            font-weight: 600; 
+        }
+        tr:nth-child(even) { 
+            background-color: #f9f9f9; 
+        }
+        .footer {
+            margin-top: 20px;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>📋 ExamenBDDPractica - Detalle de Pedidos Normalizados (3FN)</h2>
+    <p>Visualización de datos relacionales exportados desde Oracle SQL Developer.</p>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>ID Pedido</th>
+                <th>Cliente</th>
+                <th>Email</th>
+                <th>Fecha del Pedido</th>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Precio Unitario</th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Ana Pérez</td>
+                <td>ana.perez@email.com</td>
+                <td>2026-03-30</td>
+                <td>Laptop HP</td>
+                <td>1</td>
+                <td>$750.00</td>
+                <td><strong>$750.00</strong></td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Ana Pérez</td>
+                <td>ana.perez@email.com</td>
+                <td>2026-03-30</td>
+                <td>Mouse Inalámbrico</td>
+                <td>2</td>
+                <td>$25.50</td>
+                <td><strong>$51.00</strong></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Carlos Gómez</td>
+                <td>carlos.gomez@email.com</td>
+                <td>2026-03-31</td>
+                <td>Teclado Mecánico</td>
+                <td>1</td>
+                <td>$45.00</td>
+                <td><strong>$45.00</strong></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="footer">
+        Proyecto Académico - Base de Datos
+    </div>
+</div>
+
+</body>
+</html>
