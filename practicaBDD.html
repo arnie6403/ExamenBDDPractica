@@ -1,62 +1,158 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ExamenBDDPractica - Base de Datos Normalizada</title>
-    <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 40px; background-color: #f4f7f6; color: #333; }
-        .container { max-width: 950px; margin: auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
-        h2 { color: #007bff; border-bottom: 2px solid #eaeaea; padding-bottom: 12px; margin-top: 0; }
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        th, td { border: 1px solid #e1e1e1; padding: 12px; text-align: left; }
-        th { background-color: #007bff; color: white; font-weight: 600; }
-        tr:nth-child(even) { background-color: #f9f9f9; }
-    </style>
+  <meta charset='UTF8'>
+  
+  <title>Result Data</title>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
+  <style>
+  * { 
+    margin: 0; 
+    padding: 0; 
+  }
+  body { 
+    font: 14px/1.4 Palatino, Serif; 
+  }
+  
+  /* 
+  Generic Styling, for Desktops/Laptops 
+  */
+  table { 
+    width: 100%; 
+    border-collapse: collapse; 
+  }
+  /* Zebra striping */
+  tr:nth-of-type(odd) { 
+    background: #eee; 
+  }
+  th { 
+    background: #333; 
+    color: white; 
+    font-weight: bold; 
+  }
+  td, th { 
+    padding: 6px; 
+    border: 1px solid #9B9B9B; 
+    text-align: left; 
+  }
+  @media 
+  only screen and (max-width: 760px),
+  (min-device-width: 768px) and (max-device-width: 1024px)  {
+    table, thead, tbody, th, td, tr { display: block; }
+    thead tr { position: absolute;top: -9999px;left: -9999px;}
+    tr { border: 1px solid #9B9B9B; }
+    td { border: none;border-bottom: 1px solid #9B9B9B; position: relative;padding-left: 50%; }
+    
+    td:before { position: absolute;top: 6px;left: 6px;width: 45%; padding-right: 10px; white-space: nowrap;}
+    
+    /*
+    Label the data
+    */
+td:nth-of-type(1):before { content: "ID_PEDIDO"; }
+td:nth-of-type(2):before { content: "CLIENTE"; }
+td:nth-of-type(3):before { content: "EMAIL"; }
+td:nth-of-type(4):before { content: "FECHA_PEDIDO"; }
+td:nth-of-type(5):before { content: "NOMBRE_PRODUCTO"; }
+td:nth-of-type(6):before { content: "CANTIDAD"; }
+td:nth-of-type(7):before { content: "PRECIO_UNITARIO"; }
+td:nth-of-type(8):before { content: "SUBTOTAL"; }
+  }
+  
+  /* Smartphones (portrait and landscape) ----------- */
+  @media only screen
+  and (min-device-width : 320px)
+  and (max-device-width : 480px) {
+    body { 
+      padding: 0; 
+      margin: 0; 
+      width: 320px; }
+    }
+  
+  /* iPads (portrait and landscape) ----------- */
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    body { 
+      width: 495px; 
+    }
+  }
+  
+  </style>
+  <!--<![endif]-->
+<script type="text/javascript">
+
+function search(){
+  
+  var s = document.getElementById('search').value;
+
+  rows = document.getElementById('data').getElementsByTagName('TR');
+  for(var i=0;i<rows.length;i++){
+    if ( rows[i].textContent.indexOf(s)>0  || s.length==0 ) {
+	  rows[i].style.display ='';
+    } else {
+      rows[i].style.display ='none';
+    }
+  }
+}
+
+
+var timer;
+function delayedSearch() {
+	clearTimeout(timer);
+	console.log('delay-ing')
+    timer = setTimeout(function () {
+		console.log('delay-running')
+		search();
+    }, 500);
+  }</script>
 </head>
+
 <body>
+<div><input type="text" size="30" maxlength="1000" value="" id="search" onkeyup="delayedSearch();" /><input type="button" value="Go" onclick="lsearch();"/> </div>
+<table><thead><tr>	<th>ID_PEDIDO</th>
+	<th>CLIENTE</th>
+	<th>EMAIL</th>
+	<th>FECHA_PEDIDO</th>
+	<th>NOMBRE_PRODUCTO</th>
+	<th>CANTIDAD</th>
+	<th>PRECIO_UNITARIO</th>
+	<th>SUBTOTAL</th>
+</tr></thead>
+<tbody id="data">
 
-<div class="container">
-    <h2>📋 ExamenBDDPractica - Detalle de Pedidos (3FN)</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>ID Pedido</th>
-                <th>Cliente</th>
-                <th>Email</th>
-                <th>Fecha del Pedido</th>
-                <th>Producto</th>
-                <th>Cantidad</th>
-                <th>Precio Unitario</th>
-                <th>Subtotal</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Fila 1 de ejemplo basada en tus datos -->
-            <tr>
-                <td>1</td>
-                <td>Ana Pérez</td>
-                <td>ana.perez@email.com</td>
-                <td>2026-03-30</td>
-                <td>Laptop HP</td>
-                <td>1</td>
-                <td>$750.00</td>
-                <td><strong>$750.00</strong></td>
-            </tr>
-            <!-- Fila 2 de ejemplo -->
-            <tr>
-                <td>1</td>
-                <td>Ana Pérez</td>
-                <td>ana.perez@email.com</td>
-                <td>2026-03-30</td>
-                <td>Mouse Inalámbrico</td>
-                <td>2</td>
-                <td>$25.50</td>
-                <td><strong>$51.00</strong></td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-
-</body>
-</html>
+	<tr>
+<td align="right">1</td>
+<td>Ana Pérez</td>
+<td>ana.perez@email.com</td>
+<td>2026-03-30</td>
+<td>Laptop HP</td>
+<td align="right">1</td>
+<td align="right">750</td>
+<td align="right">750</td>
+	</tr>
+	<tr>
+<td align="right">1</td>
+<td>Ana Pérez</td>
+<td>ana.perez@email.com</td>
+<td>2026-03-30</td>
+<td>Mouse Inalámbrico</td>
+<td align="right">2</td>
+<td align="right">25.5</td>
+<td align="right">51</td>
+	</tr>
+</tbody></table><!-- SQL:
+SELECT 
+    p.id_pedido,
+    c.nombre AS cliente,
+    c.email,
+    TO_CHAR(p.fecha_pedido, 'YYYY-MM-DD') AS fecha_pedido,
+    pr.nombre_producto,
+    dp.cantidad,
+    pr.precio AS precio_unitario,
+    (dp.cantidad * pr.precio) AS subtotal
+FROM pedidos p
+JOIN clientes c ON p.id_cliente = c.id_cliente
+JOIN detalle_pedidos dp ON p.id_pedido = dp.id_pedido
+JOIN productos pr ON dp.id_producto = pr.id_producto--></body></html>
